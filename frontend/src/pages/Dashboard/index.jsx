@@ -23,85 +23,98 @@ function Dashboard() {
     }, []);
 
     const loadDashboard = async () => {
-  try {
-    const decisionResponse = await getDecisions();
-    const driftResponse = await getDrift();
+        try {
+            const decisionResponse = await getDecisions();
+            const driftResponse = await getDrift();
 
-    const decisionData = decisionResponse.data;
-    const driftData = driftResponse.data || [];
+            const decisionData = decisionResponse.data;
+            const driftData = driftResponse.data || [];
 
-    const items = decisionData.items || [];
+            const items = decisionData.items || [];
 
-    setRecentDecisions(items);
+            setRecentDecisions(items);
 
-    const activeModels = [...new Set(items.map((d) => d.modelName))];
+            const activeModels = [...new Set(items.map((d) => d.modelName))];
 
-    const driftAlerts = driftData.filter(
-      (d) => d.driftDetected
-    ).length;
+            const driftAlerts = driftData.filter(
+                (d) => d.driftDetected
+            ).length;
 
-    setStats([
-      {
-        name: "Total Cases",
-        value: decisionData.total,
-        change: "",
-        changeType: "neutral",
-        icon: Files,
-        color: "text-blue-500 bg-blue-500/10",
-      },
-      {
-        name: "Active Models",
-        value: activeModels.length,
-        change: "",
-        changeType: "neutral",
-        icon: Cpu,
-        color: "text-indigo-500 bg-indigo-500/10",
-      },
-      {
-        name: "Drift Alerts",
-        value: driftAlerts,
-        change: "",
-        changeType: "decrease",
-        icon: AlertTriangle,
-        color: "text-amber-500 bg-amber-500/10",
-      },
-      {
-        name: "Resolved Conflicts",
-        value: items.length,
-        change: "",
-        changeType: "increase",
-        icon: CheckCircle2,
-        color: "text-emerald-500 bg-emerald-500/10",
-      },
-      {
-        name: "Healthy Models",
-        value: activeModels.length,
-        change: "Running",
-        changeType: "increase",
-        icon: Activity,
-        color: "text-cyan-500 bg-cyan-500/10",
-      },
-    ]);
-  } catch (err) {
-    console.error("Dashboard Error:", err);
-  }
-};
+            setStats([
+                {
+                    name: "Total Cases",
+                    value: decisionData.total,
+                    change: "",
+                    changeType: "neutral",
+                    icon: Files,
+                    color: "text-blue-500 bg-blue-500/10",
+                },
+                {
+                    name: "Active Models",
+                    value: activeModels.length,
+                    change: "",
+                    changeType: "neutral",
+                    icon: Cpu,
+                    color: "text-indigo-500 bg-indigo-500/10",
+                },
+                {
+                    name: "Drift Alerts",
+                    value: driftAlerts,
+                    change: "",
+                    changeType: "decrease",
+                    icon: AlertTriangle,
+                    color: "text-amber-500 bg-amber-500/10",
+                },
+                {
+                    name: "Resolved Conflicts",
+                    value: items.length,
+                    change: "",
+                    changeType: "increase",
+                    icon: CheckCircle2,
+                    color: "text-emerald-500 bg-emerald-500/10",
+                },
+                {
+                    name: "Healthy Models",
+                    value: activeModels.length,
+                    change: "Running",
+                    changeType: "increase",
+                    icon: Activity,
+                    color: "text-cyan-500 bg-cyan-500/10",
+                },
+            ]);
+        } catch (err) {
+            console.error("Dashboard Error:", err);
+        }
+    };
 
     return (
         <div className="space-y-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold">
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
                         Governance Dashboard
                     </h2>
 
-                    <p className="text-slate-500 mt-1">
+                    <p className="mt-1 text-slate-500 dark:text-slate-400">
                         Real-time NLP Decision Reconciliation Platform
                     </p>
                 </div>
 
-                <div className="bg-white border rounded-lg px-4 py-2 shadow-sm">
-                    <span className="text-sm font-medium">
+                <div className="
+bg-white
+dark:bg-slate-900
+border
+border-slate-200
+dark:border-slate-800
+rounded-lg
+px-4
+py-2
+shadow-lg
+shadow-black/5
+dark:shadow-black/30
+transition-all
+">
+                    <span className="text-sm font-medium text-slate-900 dark:text-white">
                         Enterprise AI Governance
                     </span>
                 </div>
@@ -114,10 +127,24 @@ function Dashboard() {
                     return (
                         <div
                             key={stat.name}
-                            className="bg-white rounded-xl border p-6 shadow-sm"
+                            className="
+bg-white
+dark:bg-slate-900
+border
+border-slate-200
+dark:border-slate-800
+rounded-xl
+p-6
+shadow-lg
+shadow-black/5
+dark:shadow-black/30
+transition-all
+duration-300
+hover:shadow-xl
+"
                         >
                             <div className="flex justify-between">
-                                <span className="text-sm text-slate-500">
+                                <span className="text-sm text-slate-500 dark:text-slate-400">
                                     {stat.name}
                                 </span>
 
@@ -127,7 +154,7 @@ function Dashboard() {
                             </div>
 
                             <div className="mt-4">
-                                <h3 className="text-2xl font-bold">
+                               <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
                                     {stat.value}
                                 </h3>
 
@@ -141,7 +168,7 @@ function Dashboard() {
                                         <TrendingDown className="h-4 w-4 text-red-500 mr-1" />
                                     )}
 
-                                    <span className="text-xs">
+                               <span className="text-xs text-slate-500 dark:text-slate-400">
                                         {stat.change}
                                     </span>
 
@@ -154,16 +181,35 @@ function Dashboard() {
 
             <div className="grid lg:grid-cols-3 gap-6">
 
-                <div className="lg:col-span-2 bg-white rounded-xl border shadow-sm">
+             <div className="
+lg:col-span-2
+bg-white
+dark:bg-slate-900
+rounded-xl
+border
+border-slate-200
+dark:border-slate-800
+shadow-lg
+shadow-black/5
+dark:shadow-black/30
+">
 
-                    <div className="flex justify-between items-center p-6 border-b">
+                   <div className="
+flex
+justify-between
+items-center
+p-6
+border-b
+border-slate-200
+dark:border-slate-800
+">
 
                         <div>
-                            <h3 className="font-bold text-lg">
+                           <h3 className="font-bold text-lg text-slate-900 dark:text-white">
                                 Recent Decisions
                             </h3>
 
-                            <p className="text-xs text-slate-500">
+                           <p className="text-xs text-slate-500 dark:text-slate-400">
                                 Live decision stream
                             </p>
                         </div>
@@ -180,11 +226,11 @@ function Dashboard() {
 
                     <div className="overflow-x-auto">
 
-                        <table className="w-full text-sm">
+                <table className="w-full text-sm text-slate-700 dark:text-slate-200">        
 
                             <thead>
 
-                                <tr className="bg-slate-100">
+                                <tr className="bg-slate-100 dark:bg-slate-800">
 
                                     <th className="p-4 text-left">Case</th>
 
@@ -204,7 +250,17 @@ function Dashboard() {
 
                                 {recentDecisions.map((decision) => (
 
-                                    <tr key={decision._id} className="border-b">
+                                   <tr
+key={decision._id}
+className="
+border-b
+border-slate-200
+dark:border-slate-800
+hover:bg-slate-50
+dark:hover:bg-slate-800
+transition
+"
+>
 
                                         <td className="p-4 font-mono">
                                             {decision.caseId}
@@ -215,7 +271,16 @@ function Dashboard() {
                                         </td>
 
                                         <td className="p-4">
-                                            <span className="px-2 py-1 rounded bg-slate-100 text-xs">
+                                           <span className="
+px-2
+py-1
+rounded
+bg-slate-100
+dark:bg-slate-800
+text-slate-700
+dark:text-slate-200
+text-xs
+">
                                                 {decision.modelName}
                                             </span>
                                         </td>
@@ -240,15 +305,26 @@ function Dashboard() {
 
                 </div>
 
-                <div className="bg-white rounded-xl border shadow-sm p-6">
+           <div className="
+bg-white
+dark:bg-slate-900
+rounded-xl
+border
+border-slate-200
+dark:border-slate-800
+shadow-lg
+shadow-black/5
+dark:shadow-black/30
+p-6
+">
 
                     <div>
 
-                        <h3 className="font-bold text-lg">
+                       <h3 className="font-bold text-lg text-slate-900 dark:text-white">
                             System Health
                         </h3>
 
-                        <p className="text-xs text-slate-500">
+                       <p className="text-xs text-slate-500 dark:text-slate-400">
                             Platform metrics
                         </p>
 
@@ -268,7 +344,7 @@ function Dashboard() {
 
                             </div>
 
-                            <div className="h-2 bg-gray-200 rounded mt-1">
+                          <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded mt-1">  
                                 <div
                                     className="h-2 bg-green-500 rounded"
                                     style={{ width: "100%" }}
@@ -321,17 +397,26 @@ function Dashboard() {
 
                     </div>
 
-                    <div className="mt-8 border-t pt-6 flex items-start gap-3">
+                    <div className="
+mt-8
+border-t
+border-slate-200
+dark:border-slate-800
+pt-6
+flex
+items-start
+gap-3
+"></div>
 
                         <BrainCircuit className="text-indigo-500" />
 
                         <div>
 
-                            <h4 className="font-semibold">
+                           <h4 className="font-semibold text-slate-900 dark:text-white">
                                 Governance Engine
                             </h4>
 
-                            <p className="text-xs text-slate-500">
+                       <p className="text-xs text-slate-500 dark:text-slate-400">     
                                 Decision reconciliation and drift detection
                                 services are running.
                             </p>
@@ -344,7 +429,6 @@ function Dashboard() {
 
             </div>
 
-        </div>
     );
 }
 
