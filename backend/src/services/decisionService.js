@@ -1,5 +1,6 @@
 const Decision = require('../models/Decision');
 const conflictResolver = require('./conflictResolver');
+const driftDetector = require("./driftDetector");
 
 const saveDecision = async (decisionData) => {
     const { eventId, caseId } = decisionData;
@@ -13,7 +14,7 @@ const saveDecision = async (decisionData) => {
     const saved = await decision.save();
 
     await conflictResolver.reconcileCase(caseId);
-
+   await driftDetector.detectDrift(decisionData.modelName);
     return { duplicate: false, decision: saved };
 };
 
