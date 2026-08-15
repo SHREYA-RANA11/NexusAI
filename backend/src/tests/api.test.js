@@ -1,3 +1,6 @@
+const auditService = require("../services/auditService");
+
+jest.mock("../services/auditService");
 const request = require("supertest");
 const app = require("../app");
 
@@ -36,17 +39,15 @@ describe("NexusAI API Endpoints Integration and Validation", () => {
         eventId: "evt-dup",
       });
 
-      const response = await request(app)
-        .post("/api/decisions")
-        .send({
-          caseId: "case-01",
-          inputText: "Loan request",
-          modelName: "gpt-4",
-          decision: "Approved",
-          confidence: 0.91,
-          timestamp: "2026-08-15T12:00:00Z",
-          eventId: "evt-dup",
-        });
+      const response = await request(app).post("/api/decisions").send({
+        caseId: "case-01",
+        inputText: "Loan request",
+        modelName: "gpt-4",
+        decision: "Approved",
+        confidence: 0.91,
+        timestamp: "2026-08-15T12:00:00Z",
+        eventId: "evt-dup",
+      });
 
       expect(response.statusCode).toBe(409);
       expect(response.body.status).toBe("error");
@@ -71,17 +72,15 @@ describe("NexusAI API Endpoints Integration and Validation", () => {
         save: mockSave,
       }));
 
-      const response = await request(app)
-        .post("/api/decisions")
-        .send({
-          caseId: "case-01",
-          inputText: "Loan request",
-          modelName: "gpt-4",
-          decision: "Approved",
-          confidence: 0.91,
-          timestamp: "2026-08-15T12:00:00Z",
-          eventId: "evt-01",
-        });
+      const response = await request(app).post("/api/decisions").send({
+        caseId: "case-01",
+        inputText: "Loan request",
+        modelName: "gpt-4",
+        decision: "Approved",
+        confidence: 0.91,
+        timestamp: "2026-08-15T12:00:00Z",
+        eventId: "evt-01",
+      });
 
       expect(response.statusCode).toBe(201);
       expect(response.body.status).toBe("success");
@@ -112,9 +111,7 @@ describe("NexusAI API Endpoints Integration and Validation", () => {
       Decision.find.mockReturnValue(chain);
       Decision.countDocuments.mockResolvedValue(2);
 
-      const response = await request(app).get(
-        "/api/decisions?page=1&limit=2"
-      );
+      const response = await request(app).get("/api/decisions?page=1&limit=2");
 
       expect(response.statusCode).toBe(200);
       expect(response.body.status).toBe("success");
@@ -152,13 +149,26 @@ describe("NexusAI API Endpoints Integration and Validation", () => {
   });
 
   describe("GET /api/audit/:caseId", () => {
-    test("should return audit placeholder", async () => {
+    test("should return generated audit", async () => {
+      auditService.generateAudit.mockResolvedValue({
+        caseId: "case-99",
+        inputDecisions: [],
+        driftFlag: false,
+        jsDivergence: 0,
+        threshold: 0.3,
+        resolutionLogic: "Highest Confidence Win",
+        winningModel: "GPT-4",
+        finalDecision: "Approved",
+        auditVersion: 1,
+        generatedAt: new Date(),
+      });
+
       const response = await request(app).get("/api/audit/case-99");
 
       expect(response.statusCode).toBe(200);
-      expect(response.body).toEqual({
-        message: "Audit module coming next",
-      });
+      expect(response.body.success).toBe(true);
+      expect(response.body.data.caseId).toBe("case-99");
+      expect(auditService.generateAudit).toHaveBeenCalledWith("case-99");
     });
   });
 

@@ -56,12 +56,6 @@ const getReconciledDecision = async (req, res, next) => {
     }
 };
 
-const getAudit = async (req, res) => {
-    return res.json({
-        message: 'Audit module coming next'
-    });
-};
-
 const getDrift = async (req, res) => {
     return res.json({
         message: 'Drift module coming next'
@@ -73,6 +67,5 @@ module.exports = {
     getDecisions,
     getHistory,
     getReconciledDecision,
-    getAudit,
     getDrift
 };
