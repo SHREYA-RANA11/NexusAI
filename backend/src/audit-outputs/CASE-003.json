@@ -1,0 +1,26 @@
+{
+  "caseId": "CASE-003",
+  "inputDecisions": [
+    {
+      "model": "Claude",
+      "decision": "Approved",
+      "confidence": 0.83,
+      "timestamp": "2026-08-15T12:00:00.000Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.8,
+      "timestamp": "2026-08-15T12:10:00.000Z"
+    }
+  ],
+  "driftFlag": false,
+  "jsDivergence": 0,
+  "threshold": 0.3,
+  "resolutionLogic": "Unanimous Agreement",
+  "winningModel": "Claude",
+  "finalDecision": "Approved",
+  "auditVersion": 1,
+  "reconciledAt": "2026-08-15T06:52:26.879Z",
+  "generatedAt": "2026-08-15T06:52:33.194Z"
+}

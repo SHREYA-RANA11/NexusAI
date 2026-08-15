@@ -1,0 +1,134 @@
+{
+  "caseId": "CASE-005",
+  "inputDecisions": [
+    {
+      "model": "GPT-4",
+      "decision": "Rejected",
+      "confidence": 0.45,
+      "timestamp": "2026-08-15T06:33:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Rejected",
+      "confidence": 0.45,
+      "timestamp": "2026-08-15T06:34:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Rejected",
+      "confidence": 0.45,
+      "timestamp": "2026-08-15T06:35:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Rejected",
+      "confidence": 0.45,
+      "timestamp": "2026-08-15T06:36:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Rejected",
+      "confidence": 0.45,
+      "timestamp": "2026-08-15T06:37:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Rejected",
+      "confidence": 0.45,
+      "timestamp": "2026-08-15T06:38:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Rejected",
+      "confidence": 0.45,
+      "timestamp": "2026-08-15T06:39:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Rejected",
+      "confidence": 0.45,
+      "timestamp": "2026-08-15T06:40:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Rejected",
+      "confidence": 0.45,
+      "timestamp": "2026-08-15T06:41:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Rejected",
+      "confidence": 0.45,
+      "timestamp": "2026-08-15T06:42:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.95,
+      "timestamp": "2026-08-15T06:43:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.95,
+      "timestamp": "2026-08-15T06:44:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.95,
+      "timestamp": "2026-08-15T06:45:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.95,
+      "timestamp": "2026-08-15T06:46:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.95,
+      "timestamp": "2026-08-15T06:47:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.95,
+      "timestamp": "2026-08-15T06:48:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.95,
+      "timestamp": "2026-08-15T06:49:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.95,
+      "timestamp": "2026-08-15T06:50:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.95,
+      "timestamp": "2026-08-15T06:51:26.829Z"
+    },
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.95,
+      "timestamp": "2026-08-15T06:52:26.829Z"
+    }
+  ],
+  "driftFlag": false,
+  "jsDivergence": 0,
+  "threshold": 0.3,
+  "resolutionLogic": "Deterministic Alphabetical Tie-Breaker",
+  "winningModel": "GPT-4",
+  "finalDecision": "Approved",
+  "auditVersion": 1,
+  "reconciledAt": "2026-08-15T06:52:26.904Z",
+  "generatedAt": "2026-08-15T06:52:33.218Z"
+}

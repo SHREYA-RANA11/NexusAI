@@ -1,0 +1,26 @@
+{
+  "caseId": "CASE-001",
+  "inputDecisions": [
+    {
+      "model": "GPT-4",
+      "decision": "Approved",
+      "confidence": 0.94,
+      "timestamp": "2026-08-15T10:00:00.000Z"
+    },
+    {
+      "model": "Claude",
+      "decision": "Rejected",
+      "confidence": 0.81,
+      "timestamp": "2026-08-15T10:01:00.000Z"
+    }
+  ],
+  "driftFlag": false,
+  "jsDivergence": 0,
+  "threshold": 0.3,
+  "resolutionLogic": "Highest Confidence Win",
+  "winningModel": "GPT-4",
+  "finalDecision": "Approved",
+  "auditVersion": 1,
+  "reconciledAt": "2026-08-15T06:52:26.863Z",
+  "generatedAt": "2026-08-15T06:52:33.167Z"
+}

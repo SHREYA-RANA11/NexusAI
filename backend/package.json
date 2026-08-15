@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "jest --detectOpenHandles --forceExit"
+    "test": "jest --detectOpenHandles --forceExit",
+    "audit": "node src/scripts/generateAuditOutputs.js",
+    "seed": "node src/scripts/seedFixtures.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

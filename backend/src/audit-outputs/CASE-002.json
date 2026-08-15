@@ -1,0 +1,26 @@
+{
+  "caseId": "CASE-002",
+  "inputDecisions": [
+    {
+      "model": "GPT-4",
+      "decision": "Fraud",
+      "confidence": 0.91,
+      "timestamp": "2026-08-15T11:00:00.000Z"
+    },
+    {
+      "model": "Gemini",
+      "decision": "Fraud",
+      "confidence": 0.9,
+      "timestamp": "2026-08-15T11:00:02.000Z"
+    }
+  ],
+  "driftFlag": false,
+  "jsDivergence": 0,
+  "threshold": 0.3,
+  "resolutionLogic": "Unanimous Agreement",
+  "winningModel": "GPT-4",
+  "finalDecision": "Fraud",
+  "auditVersion": 1,
+  "reconciledAt": "2026-08-15T06:52:26.874Z",
+  "generatedAt": "2026-08-15T06:52:33.185Z"
+}

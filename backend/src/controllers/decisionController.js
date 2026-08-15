@@ -1,3 +1,7 @@
+
+
+const auditService = require("../services/auditService");
+const driftService = require("../services/driftService");
 const decisionService = require('../services/decisionService');
 const { success, error } = require('../utils/response');
 
@@ -55,11 +59,50 @@ const getReconciledDecision = async (req, res, next) => {
         next(err);
     }
 };
+const getAudit = async (req, res, next) => {
+    try {
 
-const getDrift = async (req, res) => {
-    return res.json({
-        message: 'Drift module coming next'
-    });
+        const { caseId } = req.params;
+
+        const audit = await auditService.generateAudit(caseId);
+
+        if (!audit) {
+            return res.status(404).json({
+                success: false,
+                message: "No audit found"
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            data: audit
+        });
+
+    } catch (err) {
+        next(err);
+    }
+};
+
+const getDrift = async (req, res, next) => {
+    try {
+
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
+
+        const result = await driftService.getDriftHistory(page, limit);
+
+        return res.status(200).json({
+            success: true,
+            data: result.records,
+            total: result.total,
+            page: result.page,
+            limit: result.limit,
+            totalPages: result.totalPages
+        });
+
+    } catch (err) {
+        next(err);
+    }
 };
 
 module.exports = {
@@ -67,5 +110,6 @@ module.exports = {
     getDecisions,
     getHistory,
     getReconciledDecision,
+    getAudit,
     getDrift
 };
